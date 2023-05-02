@@ -29,20 +29,20 @@ function App() {
       <h1>ola de novo</h1>
       <div>
         
-        {fruitList.map(({productName,productWeight},index) =>{
+        { fruitList.map(({productName,productWeight},index) =>{
           // o Key usado para identificar cada produto ja que o computador por si nao consegue
           //toda a lista precisa ter uma key e toda a key vai no começo
           return <CardProduct key={index} productName = {productName} productWeight= {productWeight} />
           // o map le a função e entra em um loop para cada item da lista
           //crio um lista nova para cada 
 
-          //outra forma de fazer:
+          // outra forma de fazer:
           // return (
           //  <li key={index}>
           //  <cardProduct>
           //  </li>
           //)
-        })}
+        } )}
 
         { /* passagem de propes */}
       {/*<CardProduct productName = 'Morango' productWeight={5} /> um jeito de fazer
