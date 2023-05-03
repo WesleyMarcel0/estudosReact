@@ -3,6 +3,7 @@ import './App.css'
 
 import {CardProduct} from './componentes/CardProduct'
 import { DefaultTemplate } from './template/DefaultTemplate'
+import { RegisterProductForm } from './componentes/RegisterProductForm';
 
 
 function App() {
@@ -20,21 +21,35 @@ function App() {
       setCount(count - 1);
     }
 
+  const categories = [
+      {
+        slug: "frutas",
+        label:"Frutas",
+      },     
+       {
+        slug: "legumes",
+        label:"Legumes",
+      },
+      
+    ];
 
 
   const fruitList = [
     {
       productName: 'Banana',
       productWeight: 20,
+      productCategory: 'frutas',
 
   },
   {
     productName: 'Uva',
     productWeight: 10,
+    productCategory: 'frutas',
   },
   {
     productName: 'Morango', //  forma mais usado
     productWeight: 5,
+    productCategory: 'frutas',
   }
 ];
 
@@ -46,14 +61,25 @@ function App() {
           <button onClick={sum}>+</button> {/*MEUUUUU DEUUUUUUS QUE FACIL*/}
           <button onClick={sub}>-</button>
 
-         { fruitList.map(({productName,productWeight},index) =>{
+        <ul>
+          {categories.map(({label,slug},index)=> (
+          <li key={slug} >
+            {label} </li>))} {/*returno implicito*/}
+        </ul>
+        {/*no caso crio uma prop categorias e mando as categorias criadas la em cima
+         da para mudar o nome por qualquer coisa*/}
+        <RegisterProductForm categories={categories} />
+
+          <ul>
+         { fruitList.map(({productName,productWeight},index) =>{ //retorno digitado
 
              return (<CardProduct key={index}
                      productName = {productName} 
                      productWeight= {productWeight} 
                      />)
 
-          } )}   
+          } )}  
+          </ul>
       </DefaultTemplate>
       
   
