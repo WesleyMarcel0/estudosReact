@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import './App.css'
 
 import {CardProduct} from './componentes/CardProduct'
 import { DefaultTemplate } from './template/DefaultTemplate'
@@ -11,7 +10,7 @@ function App() {
  // const [variavel,funcaoModificadora] = useState (/*valor inicial*/)
 
  //exemplo: normlamente a funcao tem o nome de setnome da variavel
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(0); //o state reconstroi o valor e coloca o valor de set
 
     function sum() {
       setCount(count + 1);

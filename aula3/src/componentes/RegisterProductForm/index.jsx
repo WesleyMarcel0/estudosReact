@@ -20,7 +20,7 @@ export const RegisterProductForm = ({categories}) => {
 
             <input type="text" value={formData.productName} onChange={(event) => setformData({...formData, productName: event.target.value })}/>
             <input type="number" value={formData.productWeight} onChange={(event) => setformData({...formData, productWeight: event.target.value }) }/>
-
+                                                                                      {/* o ...formData ta abrindo ele e permitindo chamar o productName e mudar*/}
             <select value={formData.productCategory} onChange={(event) => setformData({...formData, productCategory:event.target.value })}>
                 <option value="">Selecione uma categoria</option>
                 {categories.map(category => (
