@@ -1,8 +1,12 @@
-export function CardProduct({productName, productWeight}){ // não queça da {}
+import style from './style.module.css';
+
+export function CardProduct({product,removeProductfromProductList,editProductFromProductList}){ // não queça da {}
     return(
-        <li>
-            <h3>{productName}</h3> {/* as {} são para juntar a parte JS com o HTML*/}
-            <p>{productWeight} kg</p>
+        <li className={style.cardProduct}> {/*desta forma pode dar o mesmo nome que nao vai dar problema e
+        e o css vira geral para todos e o mudule para só um componente*/}
+            <h3>{product.productName}</h3> {/* as {} são para juntar a parte JS com o HTML*/}
+            <input type="number" value={product.productWeight} onChange={(e) => editProductFromProductList(product.id,e.target.value)}/>
+            <button onClick={() => removeProductfromProductList(product.id)}>Remover</button>
         </li>
     )
 }

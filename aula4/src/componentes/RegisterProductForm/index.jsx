@@ -13,6 +13,11 @@ export const RegisterProductForm = ({categories, addProductToList}) => {
         event.preventDefault(); 
         addProductToList(formData);
     }
+
+    const isEmpty = formData.productName === '' || formData.productWeight === '' || formData.productCategory === ''
+
+
+
     return(
         <form onSubmit={submit}> 
 
@@ -25,7 +30,8 @@ export const RegisterProductForm = ({categories, addProductToList}) => {
                     <option key={category.slug} value={category.slug}>{category.label}</option>
                     ))}
             </select>
-            <button type="submit">Cadastrar</button>
+            <button type="submit" disabled={isEmpty ? true : false}>Cadastrar</button>
+            {/*com a funcão isEmpty ele ve se é true e retorna liberand o botao de cadastrar ou nao*/}
         </form>
     )
 }
