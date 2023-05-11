@@ -8,7 +8,12 @@ import {v4 as uuidv4} from 'uuid';
 function App() {
   
   const [notaLista, setnotaLista] = useState([]); //estado de lista [] assim pra poder interagir mesmo vazio se deixar () da problema
-  console.log(notaLista);
+  
+  const NotesNumbers = notaLista.length;
+
+  const NotesLenght = notaLista.reduce((previousValue,note) => {
+      return previousValue + note.message.length;
+  }, 0 ) ; // esse zero é o valor inicial que vai começar
 
   const addNoteList = (formData) => {
     const newNote = {...formData, id: uuidv4() };
@@ -16,6 +21,11 @@ function App() {
     setnotaLista(newNoteList);
   }
 
+  const RemoveNoteFromNotList = (noteId) =>{
+
+    const NewNotelist = notaLista.filter(note => note.id !== noteId);
+    setnotaLista(NewNotelist);
+  };
 
   return (
 
@@ -30,8 +40,8 @@ function App() {
 
       <div>
         <h1>Lista de Notas</h1>
-        <NoteNumbers />
-        <NoteList />
+        <NoteNumbers NotesNumbers={NotesNumbers} NotesLenght={NotesLenght} />
+        <NoteList notaLista={notaLista} RemoveNoteFromNotList={RemoveNoteFromNotList} />
       </div>
 
      </main>
