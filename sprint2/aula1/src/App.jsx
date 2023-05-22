@@ -12,13 +12,23 @@ function App() {
       <GlobalStyle /> {/*aplicar no topo da aplicação*/}
       <Header />
       <RecipeteList />
-      <StyledButton>
-        <span>
+      <StyledButton buttonSize= "big" buttonStyle="big" >
+
           alguma coisa
-          <p>Teste1</p>
-        </span>
 
       </StyledButton>
+      <StyledButton buttonSize= "mid" buttonStyle="mid">
+
+          alguma coisa
+
+      </StyledButton>
+
+      <StyledButton buttonSize= "little" buttonStyle="little" >
+
+         alguma coisa
+
+      </StyledButton>
+
     </>
   )
 }
