@@ -2,7 +2,7 @@ import { CardList } from "./CardList"
 import { StyleRecipeList } from "./style"
 
  
-  export const RecipeteList = () =>{
+  export const RecipeteList = ({recipList}) =>{
 
     return(
 

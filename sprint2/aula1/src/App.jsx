@@ -3,13 +3,13 @@ import { Header } from './components/Header'
 import { RecipeteList } from './components/ReciptList'
 import { StyledButton } from './style/button'
 import { GlobalStyle } from './style/global'
+import { Exemplo } from '../../aula2/src/components/exemplo'
 
 function App() {
  
 
   return (
     <>
-      <GlobalStyle /> {/*aplicar no topo da aplicação*/}
       <Header />
       <RecipeteList />
       <StyledButton buttonSize= "big" buttonStyle="big" >
