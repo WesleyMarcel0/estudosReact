@@ -30,7 +30,7 @@ function App() {
 
   useEffect(() =>{
     console.log("componente app montado")
-    LoadRecip();
+    LoadRecip(); //puxar API e receber os codigos
   },[])
 
   return (
