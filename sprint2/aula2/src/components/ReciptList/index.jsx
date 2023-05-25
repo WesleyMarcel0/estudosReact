@@ -11,8 +11,15 @@ import { StyleRecipeList } from "./style"
 
         <StyleRecipeList>
 
-          <CardList recipe={{name: "Hamburgue", description: "Pão e hamburgue", category: "favorite" }} />
-          <CardList recipe={{name: "Miojo", description: "Pronto em 3 minutos", category: "recent"}} />
+          
+          {recipList.map(recipe =>(
+
+            <CardList 
+              key={recipe.id}
+              recipe={recipe} 
+            />
+
+          ))} {/*ta mandando a lista e escrevendo na tela*/}
         
         </StyleRecipeList>
         </>

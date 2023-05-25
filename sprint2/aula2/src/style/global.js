@@ -20,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 
     :root{
         --color-exemple:blue;
+        --box-shadow-1: 0 0 25px 0 sgba(0,0,0,.15);
     }
 
     img {

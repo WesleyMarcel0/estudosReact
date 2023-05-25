@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const StyleRecipeList = styled.ul`
+
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); // ou 1 fr 1 fr 1 fr
     gap: 30px;
     padding: 20px;
 

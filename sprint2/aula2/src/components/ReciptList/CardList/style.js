@@ -3,7 +3,8 @@ import styled, { css } from "styled-components";
 
 
 export const StyledRecipeCard = styled.li`
-    background-color: blue;
+    background-color: var(--color-exemple);
+    box-shadow: var(--box-shadow-1) ;
     padding: 20px;
     border-left: 8px solid ${({borderColor}) => borderColor};
     
@@ -27,5 +28,15 @@ export const StyledRecipeCard = styled.li`
         width: 100% ;
         height:200px;
     }
+
+    .contenBox{
+        display: flex;
+        align-items: flex-start; //arrumar o botão
+        flex-direction:column;
+        gap:15px;
+        padding: 20px;
+    }
+
+
 `
 // borderColor ta recebendo o parametro atravez dele mesmo 

@@ -8,7 +8,7 @@ import { Exemplo } from './components/exemplo'
 function App() {
  
   const [isOpen, setOpen] = useState(false);
-  const [recipList, setrecipList] = useState([]);
+  const [recipList, setRecipList] = useState([]);
   const [favoriteList, setFavoriteList] = useState([]) // o ([])significa que a lista vai iniciar vazia 
   console.log(recipList);
 
@@ -37,7 +37,7 @@ function App() {
       const response = await fetch('');
       //por causa do fatch precisa converter para json
       const json = await response.json();
-      setrecipList(json)
+      setRecipList(json)
 
 
 
@@ -49,8 +49,8 @@ function App() {
 
 
   useEffect(() =>{
-    console.log("componente app montado")
-    LoadRecip(); //puxar API e receber os codigos
+   
+    LoadRecip(); //puxar API e receber os codigos 1 vez, executar uma execução, GET, etc...
   },[])
 
   return (
