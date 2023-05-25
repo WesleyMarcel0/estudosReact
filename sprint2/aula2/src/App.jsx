@@ -9,7 +9,27 @@ function App() {
  
   const [isOpen, setOpen] = useState(false);
   const [recipList, setrecipList] = useState([]);
+  const [favoriteList, setFavoriteList] = useState([]) // o ([])significa que a lista vai iniciar vazia 
   console.log(recipList);
+
+  const addRecipeToFavoriteList = (recipe) =>{
+    // o some vai verificar se na favoriteList tem o algum ID que seja igual ao id de recipe.id
+    // o some retorna um boolano, true ou false
+    // o ! ta dizendo que se nao tiver ele vai fazer a ação do if que no caso é adicionar
+    if(!favoriteList.some(favorite => favorite.id === recipe.id)){
+      const newFavoriteList = [...favoriteList, recipe];
+      setFavoriteList(newFavoriteList);
+    } else{
+      console.log("item ja favoritado")
+    }
+
+
+  }
+
+  const removeRecipeFromFavoriteList = (favotiteId) =>{
+    const newFavoriteList = favoriteList.filter(favorite => favorite.id !== favotiteId);
+    setFavoriteList(newFavoriteList);
+  }
 
   const LoadRecip = async () =>{
     try { // o trycatch tenta executar o codigo linha a linha e caso de problema vai pro catch erro interrompendo a execução do try
@@ -42,7 +62,7 @@ function App() {
     
      
       <Header />
-      <RecipeteList recipList={recipList} />
+      <RecipeteList addRecipeToFavoriteList = {addRecipeToFavoriteList} recipList={recipList} />
 
       <StyledButton buttonSize= "big" buttonStyle="big" >
 
