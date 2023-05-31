@@ -2,7 +2,7 @@ import { CardList } from "./CardList"
 import { StyleRecipeList } from "./style"
 
  
-  export const RecipeteList = ({recipList}) =>{
+  export const RecipeteList = ({recipList,addRecipeToFavoriteList}) =>{
 
     return(
 
@@ -17,6 +17,7 @@ import { StyleRecipeList } from "./style"
             <CardList 
               key={recipe.id}
               recipe={recipe} 
+              addRecipeToFavoriteList={addRecipeToFavoriteList}
             />
 
           ))} {/*ta mandando a lista e escrevendo na tela*/}

@@ -4,6 +4,7 @@ import { RecipeteList } from './components/ReciptList'
 import { StyledButton } from './style/button'
 import { GlobalStyle } from './style/global'
 import { Exemplo } from './components/exemplo'
+import { FavoriteList } from './components/FavoriteList'
 
 function App() {
  
@@ -63,6 +64,16 @@ function App() {
      
       <Header />
       <RecipeteList addRecipeToFavoriteList = {addRecipeToFavoriteList} recipList={recipList} />
+      <FavoriteList favoriteList={favoriteList} removeRecipeFromFavoriteList={removeRecipeFromFavoriteList} />
+
+
+
+
+
+
+
+
+
 
       <StyledButton buttonSize= "big" buttonStyle="big" >
 

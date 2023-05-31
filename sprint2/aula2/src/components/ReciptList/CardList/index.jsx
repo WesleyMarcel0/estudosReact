@@ -1,7 +1,7 @@
 import { StyledRecipeCard } from "./style"
 import {StyledButton} from "../../../style/button"
 
-export const CardList = ({recipe}) =>{
+export const CardList = ({recipe,addRecipeToFavoriteList}) =>{
 
     return(
         <StyledRecipeCard borderColor="green" cardStyle={recipe.category}>
@@ -12,7 +12,7 @@ export const CardList = ({recipe}) =>{
                 <h3>{recipe.title}</h3>
                 <p>{recipe.description}</p>
 
-                <StyledButton buttonStyle="little" buttonSize="little" >
+                <StyledButton buttonStyle="little" buttonSize="little" onClick={()=> addRecipeToFavoriteList(recipe)}>
                     Favorita
                 </StyledButton> 
             </div>
