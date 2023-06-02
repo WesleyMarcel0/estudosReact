@@ -6,6 +6,7 @@ import { DarkMode, GlobalStyle, LightMode } from "./style/global";
 import { Exemplo } from "./components/exemplo";
 import { FavoriteList } from "./components/FavoriteList";
 import { api } from "./services/api";
+import { Categories } from "./components/Categories";
 
 function App() {
   //atualização
@@ -22,15 +23,34 @@ function App() {
     darkModeLocalStorege ? darkModeLocalStorege : "FALSE"
   );
 
+    const[filter, setFilter] = useState('');
+
+  const categories =[ // moque simples pq a API nao tinha uma rota que fornece as categorias
+    {
+      label:'Sushi',
+      slug:'sushi',
+    },
+    {
+      label:'HotDog',
+      slug:'hotdog',
+    },
+    {
+      label:'Pizza',
+      slug:'pizza'
+    }
+  ]
+
+  const filterRecipList = recipList.filter((recipe) => recipe.category === filter);
+
   useEffect(() => {
      localStorage.setItem("@DARKMODE", darkMode);
   }, [DarkMode]); //observar o darkmode
 
- 
-
   // efeito de atualização
   useEffect(() => {
+
     localStorage.setItem("@FAVORITELIST", JSON.stringify(favoriteList));
+
   }, [favoriteList]); // lista de dependencias com uma ou mais montagens
 
   const changeColorMode = () => {
@@ -38,9 +58,6 @@ function App() {
   };
 
   const addRecipeToFavoriteList = (recipe) => {
-    // o some vai verificar se na favoriteList tem o algum ID que seja igual ao id de recipe.id
-    // o some retorna um boolano, true ou false
-    // o ! ta dizendo que se nao tiver ele vai fazer a ação do if que no caso é adicionar
     if (!favoriteList.some((favorite) => favorite.id === recipe.id)) {
       const newFavoriteList = [...favoriteList, recipe];
       setFavoriteList(newFavoriteList);
@@ -58,15 +75,9 @@ function App() {
 
   const LoadRecip = async () => {
     try {
-        // o trycatch tenta executar o codigo linha a linha e caso de problema vai pro catch erro interrompendo a execução do try
-        //o await faz esperar algo acontecer para voltar ali
-        //const response = await fetch('');
-        //por causa do fatch precisa converter para json // o fetch foi substituido pelo axious apartir da aula 3
-
-      const response = await api.get("recipes"); // o axious ta comventendo para json e so precisa pegar o recipe
-        //const json = await response.json();
-
+      const response = await api.get("recipes");
       setRecipList(response.data); // por causa do axious preciso só esses dois code
+
     } catch (error) {
       console.log("erro");
     }
@@ -89,12 +100,15 @@ function App() {
 
       <button onClick={() => setOpen(!isOpen)}> modal</button>
       {isOpen ? <Exemplo /> : null}
-      {/*isOpen é true ? se for então renderize o exemplo se nao nao faça nada*/}
-
+     
       <Header />
+      <Categories categories={categories} setFilter={setFilter} filter={filter} />
+
       <RecipeteList
         addRecipeToFavoriteList={addRecipeToFavoriteList}
         recipList={recipList}
+        filterRecipList={filterRecipList}
+        filter={filter}
       />
       {isOpen ? (
         <FavoriteList

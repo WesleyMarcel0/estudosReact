@@ -49,6 +49,8 @@ export const StyledButton = styled.button`
                 padding: 0px 20px;
                 height: 40px;
             `; break
+
+            
         }
     }}
 
@@ -71,6 +73,19 @@ export const StyledButton = styled.button`
 
                 return css`
                     background-color: blue;
+                `;break
+
+            case "outline-primary":
+
+                return css`
+                    background-color: transparent;
+                    border: 1px solid var(--color-primary);
+                    color: var(--color-primary);
+
+                    :hover{
+                        background-color: var(--color-primary);
+                        color: white;
+                    }
                 `;break
             
         }

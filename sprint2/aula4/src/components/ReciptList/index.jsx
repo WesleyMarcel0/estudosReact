@@ -2,7 +2,9 @@ import { CardList } from "./CardList"
 import { StyleRecipeList } from "./style"
 
  
-  export const RecipeteList = ({recipList,addRecipeToFavoriteList}) =>{
+  export const RecipeteList = ({recipList,addRecipeToFavoriteList,filterRecipList,filter}) =>{
+
+    const currentRecipeList = filter !== '' ? filterRecipList : recipList
 
     return(
 
@@ -12,7 +14,7 @@ import { StyleRecipeList } from "./style"
         <StyleRecipeList>
 
           
-          {recipList.map(recipe =>(
+          {currentRecipeList.map(recipe =>(
 
             <CardList 
               key={recipe.id}
