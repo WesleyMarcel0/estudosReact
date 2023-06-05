@@ -7,6 +7,8 @@ import { Exemplo } from "./components/exemplo";
 import { FavoriteList } from "./components/FavoriteList";
 import { api } from "./services/api";
 import { Categories } from "./components/Categories";
+import { ToastContainer,toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   //atualização
@@ -40,6 +42,19 @@ function App() {
     }
   ]
 
+  //refinar o filter para pesquisas
+  // exemplo de pesquisar(HAMBURGUE, hamburgue, hamb)
+
+  // METODOS RECOMENTADOS PARA ALGORITIMOS DE BUSCA:
+  // trim
+  // normalize - pra não se importar com os acentos se tiver ou nao
+  // includes (string) 
+  // toLowerCase para franformar em letra minuscula
+  // || pode fazer varias buscas dentro do filter ()
+
+
+
+
   const filterRecipList = recipList.filter((recipe) => recipe.category === filter);
 
   useEffect(() => {
@@ -71,15 +86,19 @@ function App() {
       (favorite) => favorite.id !== favotiteId
     );
     setFavoriteList(newFavoriteList);
+    toast('receita desfavoritada') // cria uma caixinha bonitinha
   };
 
   const LoadRecip = async () => {
     try {
       const response = await api.get("recipes");
       setRecipList(response.data); // por causa do axious preciso só esses dois code
+      toast.success('receita favoritada com sucesso',{
+        autoClose:2000,
+      }) // 2000 = 2s
 
     } catch (error) {
-      console.log("erro");
+      toast.error("erro");
     }
   };
 
@@ -91,6 +110,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
+      <ToastContainer position="top-left" theme="dark" /> {/*é um só no top da aplicação*/}
       {darkMode === "FALSE" ? <LightMode /> : <darkMode />}
       <button onClick={changeColorMode}>alterar modo de cor</button>
       <button onClick={() => setOpen(!isOpen)}>

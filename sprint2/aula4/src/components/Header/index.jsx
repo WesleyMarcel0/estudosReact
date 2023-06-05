@@ -1,10 +1,19 @@
+import { useOutclick } from "../../hooks/useOutClick"
 
 
 export const Header = () => {
-    return(
-        <header>
 
-        Header
+    const headerRef = useOutclick(({target}) => {
+        console.log(target);
+    })
+
+    return(
+
+
+
+        <header ref={headerRef}>
+
+        <span>Receitas minhas</span>
 
         </header>
     )
