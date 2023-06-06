@@ -42,19 +42,6 @@ function App() {
     }
   ]
 
-  //refinar o filter para pesquisas
-  // exemplo de pesquisar(HAMBURGUE, hamburgue, hamb)
-
-  // METODOS RECOMENTADOS PARA ALGORITIMOS DE BUSCA:
-  // trim
-  // normalize - pra não se importar com os acentos se tiver ou nao
-  // includes (string) 
-  // toLowerCase para franformar em letra minuscula
-  // || pode fazer varias buscas dentro do filter ()
-
-
-
-
   const filterRecipList = recipList.filter((recipe) => recipe.category === filter);
 
   useEffect(() => {
