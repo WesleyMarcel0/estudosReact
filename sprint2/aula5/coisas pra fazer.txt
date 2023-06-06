@@ -1,0 +1,5 @@
+-funcionalidade de busca
+-modal de favoritos com lista de favoritos
+-lista de categorias e filtro de categorias (adicionar, remover)
+-lista de noticias
+-modal de noticias
