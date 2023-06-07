@@ -3,15 +3,17 @@ import { Header } from './components/Header'
 import { CategoryList } from './components/CategoryList'
 import { NewFeed } from './components/NewFeed'
 import { api } from './Services/api';
+import { FavorityModal } from './components/CategoryList/FavorityModal';
 
 
 function App() {
  
   const[newsList, setNewsList] = useState([]);
   const[favoritesList, setfavoritesList] = useState([]);
-  const[categories, setCategories] = useState([]);
+  const[categoriesList, setCategoriesList] = useState([]);
+  const[isFavorityModalVisible, setIsFavorityModalVisible] = useState(false); //para abrir a lista de favoritos
 
-  console.log(categories);
+  console.log(categoriesList);
 
   const loadNews = async() =>{
     try {
@@ -27,7 +29,7 @@ function App() {
   const loadCategories = async() =>{
     try {
       const response = await api.get('/categories'); // ler a documentação da api pra usar o metodo recomendado no caso esse a documentação diz para usar get
-      setCategories(response.data);
+      setCategoriesList(response.data);
 
     } catch (error) {
       console.log('erro')
@@ -43,9 +45,11 @@ function App() {
 
   return (
     <>
-        <Header  />
-        <CategoryList  />
-        <NewFeed />
+        <Header setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} />
+        <CategoryList categoriesList={categoriesList} />
+        <NewFeed newsList={newsList} />
+        {isFavorityModalVisible ? <FavorityModal /> : null}
+      {/* se isFavorityModalVisible verdadeira ?= execute/renderize := caso contrario renderize/execute null*/}
     </>
   )
 }

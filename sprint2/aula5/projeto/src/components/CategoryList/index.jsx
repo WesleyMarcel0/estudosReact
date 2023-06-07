@@ -1,11 +1,21 @@
 
 
-export const CategoryList = () =>{
+export const CategoryList = ({categoriesList}) =>{
     return(
         <ul>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>
+                <button>Recentes</button>
+            </li>
+
+            {
+            categoriesList.map(category =>(
+                <li key={category.id} >
+                    <button>
+                        {category.label}
+                    </button>
+                </li>
+            ))
+            }
         </ul>
     )
 }

@@ -2,12 +2,12 @@ import { HeaderControls } from "./HeaderControls"
 
 
 
-export const Header = () =>{
+export const Header = ({favoritesList,setIsFavorityModalVisible}) =>{
  return(
     <>
     <header>
         <img src="" alt="logo" />
-        <HeaderControls />
+        <HeaderControls setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} />
     </header>
     </>
  )

@@ -1,6 +1,6 @@
 
 
-export const HeaderControls = () =>{
+export const HeaderControls = ({favoritesList,setIsFavorityModalVisible}) =>{
     return(
         <div>
             <div>
@@ -11,7 +11,7 @@ export const HeaderControls = () =>{
             </div>
 
             <div>
-                <button>Favoritos</button>
+                <button onClick={()=>setIsFavorityModalVisible(true)} >Favoritos ({favoritesList.length}) </button>
             </div>
         </div>
     )

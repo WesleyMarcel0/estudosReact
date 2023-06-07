@@ -1,10 +1,10 @@
 
-export const NewCard = () =>{
+export const NewCard = ({currentNew}) =>{
     return(
         <li>
             <button>Favoritar</button>
-            <span></span>
-            <h3>Titulo da noticia</h3>
+            <span>{currentNew.category}</span>
+            <h3>{currentNew.title}</h3>
             <button>Saiba mais</button>
         </li>
     )
