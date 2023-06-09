@@ -1,11 +1,11 @@
 
 
-export const FavorityCard =  () =>{
+export const FavorityCard =  ({favoriteNew,removeNewfromFavoriteList}) =>{
     return(
         <li>
-            <span>Categoria</span>
-            <h3>Titulo</h3>
-            <button>Desfavoritar</button>
+            <span>{favoriteNew.category}</span>
+            <h3>{favoriteNew.title}</h3>
+            <button onClick={()=>removeNewfromFavoriteList(favoriteNew.id)}>Desfavoritar</button>
         </li>
     )
 }

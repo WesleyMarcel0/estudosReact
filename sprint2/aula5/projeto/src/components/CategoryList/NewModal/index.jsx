@@ -1,13 +1,13 @@
 
 
-export const NewModal = () =>{
+export const NewModal = ({currentSelectNew,setCurrentSelectNew}) =>{
     return(
         <div>
             <div role="dialog">
-                <button>Fechar</button>
-                <span>Categoria</span>
-                <h1>Titulo da Noticia</h1>
-                <p>Texto</p>
+                <button onClick={() => setCurrentSelectNew(null)} >Fechar</button>
+                <span>{currentSelectNew.category}</span>
+                <h1>{currentSelectNew.title}</h1>
+                <p>{currentSelectNew.content}</p>
             </div>
         </div>
     )

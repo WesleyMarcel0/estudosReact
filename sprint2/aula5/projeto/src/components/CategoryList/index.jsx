@@ -1,16 +1,16 @@
 
 
-export const CategoryList = ({categoriesList}) =>{
+export const CategoryList = ({categoriesList,setFilter}) =>{
     return(
         <ul>
             <li>
-                <button>Recentes</button>
+                <button onClick={()=>setFilter("")} >Recentes</button>
             </li>
 
             {
             categoriesList.map(category =>(
                 <li key={category.id} >
-                    <button>
+                    <button onClick={()=>setFilter(category.slug)} >
                         {category.label}
                     </button>
                 </li>

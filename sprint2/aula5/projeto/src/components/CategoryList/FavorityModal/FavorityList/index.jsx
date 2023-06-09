@@ -1,10 +1,14 @@
 import { FavorityCard } from "./FavorityCard"
 
 
-export const FavorityList = () =>{
+export const FavorityList = ({favoritesList,removeNewfromFavoriteList}) =>{
     return(
         <ul>
-            <FavorityCard />
+            {favoritesList.map(favoriteNew =>(
+               <FavorityCard key={favoriteNew.id} favoriteNew={favoriteNew} removeNewfromFavoriteList={removeNewfromFavoriteList} /> 
+            ))
+            }
+            
         </ul>
     )
 }
