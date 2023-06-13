@@ -1,3 +1,4 @@
+import { StyledTitleTwo } from "../../styles/typography"
 import { NewCard } from "./NewCard"
 
 
@@ -7,7 +8,7 @@ export const NewFeed = ({filter,newsList,addNewToFavoriteList,setCurrentSelectNe
 
     return( // se tiver o que ta antes do (!==) faça essa ação () do contrario faça essa
         <div>
-            <h2>{search !== '' ? `Resultados para:${search}` : 'Recentes'}</h2>
+            <StyledTitleTwo fontSize='one' >{search !== '' ? `Resultados para:${search}` : 'Recentes'}</StyledTitleTwo>
             {search !== '' ? <button onClick={()=>setSearch('')}>Limpar Busca</button> : null }
             <ul>
                 {

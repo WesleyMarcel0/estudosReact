@@ -5,6 +5,8 @@ import { NewFeed } from './components/NewFeed'
 import { api } from './Services/api';
 import { FavorityModal } from './components/CategoryList/FavorityModal';
 import { NewModal } from './components/CategoryList/NewModal';
+import { GlobalStyles } from './styles/globalStyles';
+import { StyledContainer } from './styles/grid';
 
 
 function App() {
@@ -86,10 +88,15 @@ const searchAndFilteredResults = newsList.filter((currentNew) =>
 
   return (
     <>
-      
+        <GlobalStyles />
         <Header setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} setSearch={setSearch} />
-        <CategoryList categoriesList={categoriesList} setFilter={setFilter} />
-        <NewFeed newsList={newsList} addNewToFavoriteList={addNewToFavoriteList} setCurrentSelectNew={setCurrentSelectNew} searchAndFilteredResults={searchAndFilteredResults} search={search} setSearch={setSearch} filter={filter} />
+       
+        <StyledContainer>
+          <CategoryList categoriesList={categoriesList} setFilter={setFilter} />
+          <NewFeed newsList={newsList} addNewToFavoriteList={addNewToFavoriteList} setCurrentSelectNew={setCurrentSelectNew} searchAndFilteredResults={searchAndFilteredResults} search={search} setSearch={setSearch} filter={filter} />
+        </StyledContainer>
+
+       
         {isFavorityModalVisible ? <FavorityModal favoritesList={favoritesList} removeNewfromFavoriteList={removeNewfromFavoriteList}  /> : null}
       {/* se isFavorityModalVisible verdadeira ?= execute/renderize := caso contrario renderize/execute null*/}
         {currentSelectNew ? <NewModal currentSelectNew={currentSelectNew} setCurrentSelectNew={setCurrentSelectNew} /> : null}
