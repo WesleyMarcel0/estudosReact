@@ -15,6 +15,7 @@ export const StyledHeader = styled.header`
 
     @media(min-width:800px){
         padding: 5px 0;
+        
         .flexBox{
             flex-direction: row;
             justify-content: space-between;

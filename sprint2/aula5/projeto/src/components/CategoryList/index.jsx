@@ -1,21 +1,18 @@
+import { UseMobile } from "../hooks/useMobile"
+import { DesktopCategoryList } from "./desktop/inde";
+import { MobileCategoryList } from "./mobile"
 
 
 export const CategoryList = ({categoriesList,setFilter}) =>{
-    return(
-        <ul>
-            <li>
-                <button onClick={()=>setFilter("")} >Recentes</button>
-            </li>
 
-            {
-            categoriesList.map(category =>(
-                <li key={category.id} >
-                    <button onClick={()=>setFilter(category.slug)} >
-                        {category.label}
-                    </button>
-                </li>
-            ))
-            }
-        </ul>
+    const isMobile = UseMobile(800);
+    console.log(isMobile);
+
+
+    return(
+       <>
+       {isMobile ?<MobileCategoryList categoriesList={categoriesList} setFilter={setFilter}/> : <DesktopCategoryList categoriesList={categoriesList} setFilter={setFilter} /> }
+        
+       </>
     )
 }

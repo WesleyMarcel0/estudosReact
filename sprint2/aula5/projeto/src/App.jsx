@@ -90,9 +90,10 @@ const searchAndFilteredResults = newsList.filter((currentNew) =>
     <>
         <GlobalStyles />
         <Header setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} setSearch={setSearch} />
-       
+      
+        <CategoryList categoriesList={categoriesList} setFilter={setFilter} />
         <StyledContainer>
-          <CategoryList categoriesList={categoriesList} setFilter={setFilter} />
+          
           <NewFeed newsList={newsList} addNewToFavoriteList={addNewToFavoriteList} setCurrentSelectNew={setCurrentSelectNew} searchAndFilteredResults={searchAndFilteredResults} search={search} setSearch={setSearch} filter={filter} />
         </StyledContainer>
 
