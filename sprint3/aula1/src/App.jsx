@@ -1,20 +1,12 @@
-import { useState } from 'react'
-import { Routes , Route } from "react-router-dom";
+import { RoutesMain } from "./routes"
 
 
 function App() {
   
 
   return (
-    <>
-      <h1>Teste</h1>
-
-      <Routes>
-
-        
-      </Routes>
-    </>
-  )
-}
+    <RoutesMain />
+  );
+};
 
 export default App
