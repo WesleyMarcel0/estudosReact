@@ -59,6 +59,9 @@ export const Global = createGlobalStyle`
         cursor: pointer;
     }
 
+    li{
+        color:var(--color-secondary);
+    }
 `;
 
 // 1rem = 16px => 100%

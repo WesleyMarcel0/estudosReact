@@ -10,7 +10,8 @@ export const RoutesMain = () => {
 
       <Route path="/" element={<Home />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/info" element={<Info />} />
+      <Route path="/info/:id" element={<Info />} />
+      {/* aps o :nome é criado que recebe o valor que for colocado apos info/ */}
 
     </Routes>
   );

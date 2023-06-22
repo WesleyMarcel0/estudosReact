@@ -2,7 +2,7 @@
 
 export const Register =()=>{
     return(
-        <main>
+    <main>
         <section>
             <h1>registro</h1>
         </section>
