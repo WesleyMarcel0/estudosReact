@@ -1,9 +1,9 @@
 
 
-export const MoneyTotal = () =>{
+export const MoneyTotal = ({contaTotal}) =>{
     return(
         <>
-        <h1>Valor total: 8.184,00</h1>
+        <h1>Valor total: {contaTotal}</h1>
         <p>O valor se refere ao saldo</p>
         </>
     )
