@@ -9,9 +9,7 @@ function App() {
  
   const [count, setCount] = useState(0);
   const [contaTotal, setContaTotal] = useState(0);
-  const [listTransition, setListTransition] = useState([   { 
-   id:1, description: "Salário recebido", type: "entrada", value: 2500 },
-  { id:2, description: "Conta de luz", type: "saída", value: -150 }]);
+  const [listTransition, setListTransition] = useState([]);
 
 
 
@@ -19,8 +17,8 @@ function App() {
     iden();
     const newproduct = {...formData, id:count, value:Number(formData.value)};
     setListTransition([...listTransition,newproduct]);
-
-    total();
+    
+  
   };
 
   const productRemoveList = (idprodu) => {
@@ -28,7 +26,7 @@ function App() {
         return product.id !== idprodu
     });
     setListTransition(newproduct);
-    total();
+    
   }
 
 
@@ -37,19 +35,23 @@ function App() {
     setCount(newcount);
   }
 
-  const total = () =>{
-    
-    let conta = Number( listTransition.value );
-    setContaTotal(conta);
+  let conta = listTransition.reduce(
+    (acc , crv)=>{
+      return(acc+crv.value)
+    }, 0
+  )
 
-  }
 
-  console.log(contaTotal)
+  console.log(listTransition.reduce(
+    (acc , crv)=>{
+      return(acc+crv.value)
+    }, 0
+  ))
   
   return (
     <>
       <Header />
-      <FormListAdiction listTransition={listTransition} setListTransition={setListTransition} addProductList={addProductList} />
+      <FormListAdiction listTransition={listTransition} setListTransition={setListTransition} addProductList={addProductList} setContaTotal={setContaTotal} />
       <MoneyTotal contaTotal={contaTotal} />
       <ListOfTransition listTransition={listTransition} productRemoveList={productRemoveList} />
      
