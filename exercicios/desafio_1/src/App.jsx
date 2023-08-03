@@ -17,8 +17,6 @@ function App() {
     iden();
     const newproduct = {...formData, id:count, value:Number(formData.value)};
     setListTransition([...listTransition,newproduct]);
-    
-  
   };
 
   const productRemoveList = (idprodu) => {
@@ -35,23 +33,28 @@ function App() {
     setCount(newcount);
   }
 
+  let continha =()=>{
+
   let conta = listTransition.reduce(
     (acc , crv)=>{
       return(acc+crv.value)
     }, 0
-  )
+    );
 
+    setContaTotal(conta);
+  }
 
+/*
   console.log(listTransition.reduce(
     (acc , crv)=>{
       return(acc+crv.value)
     }, 0
   ))
-  
+*/
   return (
     <>
       <Header />
-      <FormListAdiction listTransition={listTransition} setListTransition={setListTransition} addProductList={addProductList} setContaTotal={setContaTotal} />
+      <FormListAdiction listTransition={listTransition} setListTransition={setListTransition} addProductList={addProductList} />
       <MoneyTotal contaTotal={contaTotal} />
       <ListOfTransition listTransition={listTransition} productRemoveList={productRemoveList} />
      
