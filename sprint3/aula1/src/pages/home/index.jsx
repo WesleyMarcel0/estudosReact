@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 
 export const Home = () =>{
+
     const[books, setBooks] = useState([]);
 
     useEffect(() =>{
@@ -24,7 +25,7 @@ export const Home = () =>{
             <section>
                 <h1>Teste</h1>
 
-                <ul>
+                <ul> {/*pra cada book ele vai criar uma li nesse caso*/}
                     {books.map((book) => (
                     <li key={book.id}>
 
