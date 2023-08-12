@@ -12,10 +12,12 @@ export const Info = () =>{
     useEffect(() =>{
 
        async function getBook(){
-            const response = await api.get(`/books/${id}`);
+      /*    const response = await api.get(`/books/${id}`);   */
+             const response = await api;
 
             console.log(response.date);
-            setBook(response.date);
+        /*  setBook(response.date); */
+             setBook(response);
         }
 
         getBook();
@@ -25,6 +27,8 @@ export const Info = () =>{
     <main>
         <section>
             <h1>Informação</h1>
+
+            <img src={book.cover} alt={book.name} />
         </section>
     </main>
     )

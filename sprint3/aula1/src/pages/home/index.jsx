@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { api } from "../../services";
 import { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Card } from "../../components/Card";
 
 
 export const Home = () =>{
@@ -11,10 +11,13 @@ export const Home = () =>{
     useEffect(() =>{
 
        async function getBooks(){
-            const response = await api.get('/books');
+     /*     const response = await api.get('/books'); pra APi de verdade usar esse */
+            const response = await api // esse ta aqui só porque to sem API
 
             console.log(response);
-            setBooks(response.date);
+
+    /*      setBooks(response.date); pra APi de verdade usar esse */
+            setBooks(response);
         }
 
         getBooks();
@@ -27,11 +30,9 @@ export const Home = () =>{
 
                 <ul> {/*pra cada book ele vai criar uma li nesse caso*/}
                     {books.map((book) => (
-                    <li key={book.id}>
 
-                        <Link to={`/info/${book.id}`}> {book.name} </Link> {/*usar o Link do react-router-dom que ele não recarrega a pagina apenas muda o que precisa se rmudado*/}
-                       
-                    </li> ))}
+                        <Card key={book.id} book={book} />
+                    ))}
                 </ul>
             </section>
         </main>
