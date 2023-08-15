@@ -7,21 +7,40 @@ import { api } from "../../services";
 export const Info = () =>{
     const {id} = useParams(); // vai receber o id la do info
 
-    const[book, setBook] = useState([]);
+    const[book, setBook] = useState(null);
+    const[loading, setLoading] = useState(true);
 
     useEffect(() =>{
 
-       async function getBook(){
-      /*    const response = await api.get(`/books/${id}`);   */
-             const response = await api;
+        async function getBook(){
+            try {
+            
+            /*const response = await api.get(`/books/${id}`);   */
+                const response = await api;
 
-            console.log(response.date);
-        /*  setBook(response.date); */
-             setBook(response);
+                console.log(response.date);
+            /*setBook(response.date); */
+                setBook(response);  
+
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setLoading(false);
+        }
+
+
         }
 
         getBook();
     },[]);
+
+    if(loading){
+        return <p>Carregado...</p>
+    }
+
+    if(!book){
+        return <p>Livro não encontrado...</p>
+    }
 
     return(
     <main>

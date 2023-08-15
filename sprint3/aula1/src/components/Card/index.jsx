@@ -5,7 +5,7 @@ export const Card = ({book}) =>{
     return(
         <Container>
 
-             <Link to={`/info/${book.id}`}> 
+             <Link to={`${book.id}`}> 
                 <img src={book.cover} alt={book.name} />
                 <span>{book.name}</span>
                 <span>{book.author}</span>

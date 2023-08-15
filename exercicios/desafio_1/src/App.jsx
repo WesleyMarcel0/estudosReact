@@ -25,6 +25,7 @@ function App() {
     });
     setListTransition(newproduct);
     
+    
   }
 
 
@@ -44,6 +45,7 @@ function App() {
     setContaTotal(conta);
   }
 
+  console.log(contaTotal)
 /*
   console.log(listTransition.reduce(
     (acc , crv)=>{
@@ -54,7 +56,7 @@ function App() {
   return (
     <>
       <Header />
-      <FormListAdiction listTransition={listTransition} setListTransition={setListTransition} addProductList={addProductList} />
+      <FormListAdiction listTransition={listTransition} setListTransition={setListTransition} addProductList={addProductList}/>
       <MoneyTotal contaTotal={contaTotal} />
       <ListOfTransition listTransition={listTransition} productRemoveList={productRemoveList} />
      

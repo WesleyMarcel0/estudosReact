@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { api } from "../../services";
 import { useState } from "react";
 import { Card } from "../../components/Card";
+import { Outlet } from "react-router-dom";
 
 
 export const Home = () =>{
@@ -27,6 +28,8 @@ export const Home = () =>{
         <main>
             <section>
                 <h1>Teste</h1>
+
+                <Outlet />
 
                 <ul> {/*pra cada book ele vai criar uma li nesse caso*/}
                     {books.map((book) => (
