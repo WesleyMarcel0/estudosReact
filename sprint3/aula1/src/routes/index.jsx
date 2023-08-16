@@ -16,7 +16,7 @@ export const RoutesMain = () => {
       </Route>
       <Route path="/register" element={<Register />} />
       <Route path="/info/:id" element={<Info />} />
-      {/* aps o :nome é criado que recebe o valor que for colocado apos info/ */}
+     
 
       <Route path="/" element={<Navigate to={`/home`} />} /> {/* encaminha para a pagina*/}
       <Route path="*" element={ <h1>Pagina Não encontrada</h1> } /> {/*se caso digite uma rota que nao existe das decima*/}
