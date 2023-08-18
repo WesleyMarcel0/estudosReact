@@ -1,38 +1,28 @@
-import { useState } from "react"
-
+import { useForm } from "react-hook-form"
 
 export const Register = ( )=>{
 
-    const [form, setForm] = useState({
-        email:"",
-        name:"",
-    });
+    const {register,handleSubmit} = useForm(); //desistruturar
+    
+    console.log("renderizando!");
 
-
-    function HandleSubmit(event) {
-        event.preventDefault();
-
-        console.log(form);
+    const handleRegister = (data) =>{
+        console.log(data);
     }
-
 
     return(
     <main>
         <section>
             <h1>registro</h1>
 
-            <form onSubmit={HandleSubmit} >
-                <input 
-                    type="email" 
-                    name="email" 
-                    onChange={(event) => setForm({...form, email: event.target.value})} />
-                <input
-                    type="text" 
-                    name="name" 
-                    onChange={(event) => setForm({...form, name: event.target.value})} 
-                    />
+            <form onSubmit={handleSubmit(handleRegister)} >
+                <input type="email" {...register('email')}
+                   // name={register('name'.name)} 
+                   // onChange={register('name').onChange}
+                   // onBlur={register('name').onBlur} 
+                   />
+                <input type="text" {...register('text')} />
 
-                
                 <button type="submit">Cadastrar</button>
 
             </form>
