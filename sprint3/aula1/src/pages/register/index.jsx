@@ -9,23 +9,24 @@ import * as z from 'zod';
 
 const schema = z.object({
     name: z.string().nonempty('Nome é Obrigatorio'),
-    author:
-    cover:
-    published:
-    numberOfPages:
-    publishedCompany:
+    author: z.string().nonempty('Nome é Obrigatorio'),
+    cover: z.string().url("deve ser uma URL").nonempty("Capa é obrigatoria") ,
+    published: z.string().nonempty('Nome é Obrigatorio'),
+    numberOfPages: z.coerce.number().min(1,'deve ter no minimo 1 pag.'),
+    publishedCompany: z.string().nonempty('Nome é Obrigatorio') ,
 
 })
 
 export const Register = ( )=>{
 
-    const {register,handleSubmit} = useForm({
+    const {register,handleSubmit, formState:{ errors }, } = useForm({
         resolver: zodResolver(schema),
     }); //desistruturar e vinculando o zod ao formulario
+
     const [isTypePassword, setIsTypePassword] = useState(true);
     const navigate = useNavigate();
     
-    console.log("renderizando!");
+    console.log("Error", errors );
 
     const handleRegister = async (data) =>{
 
@@ -57,6 +58,8 @@ export const Register = ( )=>{
                     placeholder='Nome'
                     {...register('name')}
                 />
+                <p>{errors.name?.message}</p>
+                {/*quando existir depois do ? vc faz se nao nao faz nada*/}
 
                 <InputRef 
                     type='text'
@@ -65,6 +68,7 @@ export const Register = ( )=>{
                     placeholder='Autor'
                     {...register('author')}
                 />
+                <p>{errors.author?.message}</p>
 
                 <InputRef 
                     type='text'
@@ -73,6 +77,7 @@ export const Register = ( )=>{
                     placeholder='ex: https://capa.com'
                     {...register('cover')}
                 />
+                <p>{errors.cover?.message}</p>
 
                 <InputRef 
                     type='text'
@@ -81,6 +86,7 @@ export const Register = ( )=>{
                     placeholder='ex Janeiro de 2023'
                     {...register('published')}
                 />
+                <p>{errors.published?.message}</p>
                 
                 <InputRef 
                     type='number'
@@ -89,6 +95,7 @@ export const Register = ( )=>{
                     placeholder='ex: XX'
                     {...register('numberOfPages')}
                 />
+                <p>{errors.numberOfPages?.message}</p>
 
                 <InputRef 
                     type='text'
@@ -97,6 +104,7 @@ export const Register = ( )=>{
                     placeholder='editora'
                     {...register('publishedCompany')}
                 />
+                <p>{errors.publishedCompany?.message}</p>
 
 {/*
                 <Input2
