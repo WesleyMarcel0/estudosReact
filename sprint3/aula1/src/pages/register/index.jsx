@@ -3,16 +3,25 @@ import {InputRef} from "../../components/input"
 import { Input2 } from "../../components/input/index3Forma";
 import { useState } from "react";
 import { api } from "../../services";
+import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from "react-router-dom";
 import * as z from 'zod';
 
 const schema = z.object({
-    
+    name: z.string().nonempty('Nome é Obrigatorio'),
+    author:
+    cover:
+    published:
+    numberOfPages:
+    publishedCompany:
+
 })
 
 export const Register = ( )=>{
 
-    const {register,handleSubmit} = useForm(); //desistruturar
+    const {register,handleSubmit} = useForm({
+        resolver: zodResolver(schema),
+    }); //desistruturar e vinculando o zod ao formulario
     const [isTypePassword, setIsTypePassword] = useState(true);
     const navigate = useNavigate();
     
