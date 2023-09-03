@@ -14,6 +14,7 @@ export const RoutesMain = () => {
       
 
       </Route>
+      
       <Route path="/register" element={<Register />} />
       <Route path="/info/:id" element={<Info />} />
      

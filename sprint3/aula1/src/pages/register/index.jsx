@@ -5,22 +5,15 @@ import { useState } from "react";
 import { api } from "../../services";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from "react-router-dom";
-import * as z from 'zod';
+import { schema } from "./valideitor";
 
-const schema = z.object({
-    name: z.string().nonempty('Nome é Obrigatorio'),
-    author: z.string().nonempty('Nome é Obrigatorio'),
-    cover: z.string().url("deve ser uma URL").nonempty("Capa é obrigatoria") ,
-    published: z.string().nonempty('Nome é Obrigatorio'),
-    numberOfPages: z.coerce.number().min(1,'deve ter no minimo 1 pag.'),
-    publishedCompany: z.string().nonempty('Nome é Obrigatorio') ,
 
-})
+
 
 export const Register = ( )=>{
 
     const {register,handleSubmit, formState:{ errors }, } = useForm({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(schema ),
     }); //desistruturar e vinculando o zod ao formulario
 
     const [isTypePassword, setIsTypePassword] = useState(true);
@@ -55,6 +48,7 @@ export const Register = ( )=>{
                     type='text'
                     id='name'
                     label='Nome'
+                    error={errors.name?.message}
                     placeholder='Nome'
                     {...register('name')}
                 />
@@ -65,46 +59,51 @@ export const Register = ( )=>{
                     type='text'
                     id='author'
                     label='Autor'
+                    error={errors.author?.message}
                     placeholder='Autor'
                     {...register('author')}
                 />
-                <p>{errors.author?.message}</p>
+                
 
                 <InputRef 
                     type='text'
                     id='cover'
                     label='Capa'
+                    error={errors.cover?.message}
                     placeholder='ex: https://capa.com'
                     {...register('cover')}
                 />
-                <p>{errors.cover?.message}</p>
+              
 
                 <InputRef 
                     type='text'
                     id='published'
                     label='publicado em'
+                    error={errors.published?.message}
                     placeholder='ex Janeiro de 2023'
                     {...register('published')}
                 />
-                <p>{errors.published?.message}</p>
+                
                 
                 <InputRef 
                     type='number'
                     id='numberOfPages'
                     label='N° de Paginas'
+                    error={errors.numberOfPages?.message}
                     placeholder='ex: XX'
                     {...register('numberOfPages')}
                 />
-                <p>{errors.numberOfPages?.message}</p>
+               
 
                 <InputRef 
                     type='text'
                     id='publishedCompany'
                     label='Editora'
+                    error={errors.publishedCompany?.message}
                     placeholder='editora'
                     {...register('publishedCompany')}
                 />
-                <p>{errors.publishedCompany?.message}</p>
+
 
 {/*
                 <Input2
