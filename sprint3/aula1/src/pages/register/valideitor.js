@@ -1,6 +1,6 @@
 import * as z from 'zod';
 
-export const schema = z.object({ // o coerce no number tava convertendo em um numero
+export const schema = z.object({ // o coerce converte no que esta a sua frente
     
     name: z.string().nonempty('Nome é Obrigatorio'),
     author: z.string().optional(),
