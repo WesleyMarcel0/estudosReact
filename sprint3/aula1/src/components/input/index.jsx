@@ -5,9 +5,13 @@ import { Container } from "./styles";
     //recebe a ref como segundo item sem gerar erro
     return(
         <Container>
+
             {label ? <label htmlFor={id}>{label}</label> : null}
+
             <input id={id} ref={ref} {... rest} />
+            
             {error ? <p>{error}</p> : null }
+
         </Container>
     );
 };

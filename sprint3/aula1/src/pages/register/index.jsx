@@ -11,9 +11,9 @@ import { schema } from "./valideitor";
 
 
 export const Register = ( )=>{
-
+                                // esse formState é um objeto que pode alertar o estado do formulario
     const {register,handleSubmit, formState:{ errors }, } = useForm({
-        resolver: zodResolver(schema ),
+        resolver: zodResolver( schema ),
     }); //desistruturar e vinculando o zod ao formulario
 
     const [isTypePassword, setIsTypePassword] = useState(true);

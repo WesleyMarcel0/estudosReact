@@ -17,6 +17,8 @@ function App() {
     iden();
     const newproduct = {...formData, id:count, value:Number(formData.value)};
     setListTransition([...listTransition,newproduct]);
+
+    
   };
 
   const productRemoveList = (idprodu) => {
@@ -34,22 +36,23 @@ function App() {
     setCount(newcount);
   }
 
-  let continha =()=>{
+  const continha =()=>{
 
-  let conta = listTransition.reduce(
+   return listTransition.reduce(
     (acc , crv)=>{
       return(acc+crv.value)
     }, 0
     );
-
-    setContaTotal(conta);
   }
 
   console.log(contaTotal)
+
+  console.log(continha)
 /*
-  console.log(listTransition.reduce(
-    (acc , crv)=>{
-      return(acc+crv.value)
+  console.log(
+    listTransition.reduce(
+      (acc , crv)=>{
+        return(acc+crv.value)
     }, 0
   ))
 */
