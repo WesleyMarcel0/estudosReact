@@ -1,0 +1,4 @@
+ essa nota é para lembrar como se coloca uma imagem
+
+ 1- Import nomeDaImagem from '../../ateApasta'
+ 2- Coloca o nome da imagem no src da tag imagem criada
