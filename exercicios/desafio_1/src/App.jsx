@@ -3,14 +3,14 @@ import { Header } from './components/header'
 import { FormListAdiction } from './components/FormListAdiction'
 import { MoneyTotal } from './components/TotalMoney'
 import { ListOfTransition } from './components/ListOfTransitions'
+import { useEffect } from 'react'
 
 
 function App() {
  
   const [count, setCount] = useState(0);
-  const [contaTotal, setContaTotal] = useState(0);
   const [listTransition, setListTransition] = useState([]);
-
+  const [contaTotal, setContaTotal] = useState(0);
 
 
   const addProductList = (formData) =>{
@@ -38,16 +38,13 @@ function App() {
 
   const continha =()=>{
 
-   return listTransition.reduce(
+   return ( listTransition.reduce(
     (acc , crv)=>{
       return(acc+crv.value)
     }, 0
-    );
+    ) )
   }
-
-  console.log(contaTotal)
-
-  console.log(continha)
+  
 /*
   console.log(
     listTransition.reduce(
@@ -56,6 +53,13 @@ function App() {
     }, 0
   ))
 */
+
+useEffect(()=>{
+
+  setContaTotal(continha);;
+
+},[listTransition])
+
   return (
     <>
       <Header />
