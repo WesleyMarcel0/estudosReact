@@ -15,6 +15,8 @@ export const HeaderControls = ({favoritesList,setIsFavorityModalVisible,setSearc
 
     }
 
+    console.log('controls carregou')
+
     return(
         <StyledHeardControls>
             <div>

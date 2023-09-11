@@ -1,18 +1,14 @@
 import { UseMobile } from "../hooks/useMobile"
-import { DesktopCategoryList } from "./desktop/inde";
-import { MobileCategoryList } from "./mobile"
 
-
-export const CategoryList = ({categoriesList,setFilter}) =>{
+export const CategoryList = ({mobileList, desktopList}) =>{
 
     const isMobile = UseMobile(800);
     console.log(isMobile);
 
 
     return(
-       <>
-       {isMobile ?<MobileCategoryList categoriesList={categoriesList} setFilter={setFilter}/> : <DesktopCategoryList categoriesList={categoriesList} setFilter={setFilter} /> }
-        
-       </>
+        <>
+         {isMobile ? mobileList : desktopList }
+        </>
     )
 }

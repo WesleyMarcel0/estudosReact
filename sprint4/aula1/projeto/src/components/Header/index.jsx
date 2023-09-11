@@ -4,14 +4,17 @@ import { StyledHeader } from "./style"
 
 
 
-export const Header = ({favoritesList,setIsFavorityModalVisible,setSearch}) =>{
+export const Header = ({children}) =>{
+
+    console.log('header carregou')
+
  return(
     <>
     <StyledHeader >
         <StyledContainer>
             <div className="flexBox">
                 <img src="" alt="logo" />
-                <HeaderControls setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} setSearch={setSearch} />
+                {children}
             </div>
 
         </StyledContainer>

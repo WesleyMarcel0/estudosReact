@@ -7,6 +7,9 @@ import { FavorityModal } from './components/CategoryList/FavorityModal';
 import { NewModal } from './components/CategoryList/NewModal';
 import { GlobalStyles } from './styles/globalStyles';
 import { StyledContainer } from './styles/grid';
+import { HeaderControls } from './components/Header/HeaderControls';
+import { MobileCategoryList } from './components/CategoryList/mobile';
+import { DesktopCategoryList } from './components/CategoryList/desktop/inde';
 
 
 function App() {
@@ -86,12 +89,26 @@ const searchAndFilteredResults = newsList.filter((currentNew) =>
     setfavoritesList(newFavoriteList);
   }
 
+  console.log('app carregou')
+
   return (
     <>
         <GlobalStyles />
-        <Header setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} setSearch={setSearch} />
+        {/*-- compisição diminui o prop drilling e melhora a performace --*/}
+        <Header>
+          <HeaderControls setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} setSearch={setSearch}  />
+        </Header>
       
-        <CategoryList categoriesList={categoriesList} setFilter={setFilter} />
+        <CategoryList 
+          mobileList={<MobileCategoryList 
+            categoriesList={categoriesList} 
+            setFilter={setFilter}/> }
+
+          desktopList={<DesktopCategoryList 
+            categoriesList={categoriesList} 
+            setFilter={setFilter} />}
+        />
+
         <StyledContainer>
           
           <NewFeed newsList={newsList} addNewToFavoriteList={addNewToFavoriteList} setCurrentSelectNew={setCurrentSelectNew} searchAndFilteredResults={searchAndFilteredResults} search={search} setSearch={setSearch} filter={filter} />
