@@ -1,4 +1,10 @@
-export const DesktopCategoryList = ({categoriesList,setFilter}) => {
+
+import { useNewsContext } from "../../providers/NewsContext";
+
+export const DesktopCategoryList = ({categoriesList}) => {
+
+  const {setFilter} = useNewsContext();
+
   return (
     <ul>
       <li>

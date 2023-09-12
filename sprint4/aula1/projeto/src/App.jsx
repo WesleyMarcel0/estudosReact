@@ -16,38 +16,14 @@ function App() {
  
   const localStorageFavoriteList = localStorage.getItem('@FAVORITELIST');
 
-  const[newsList, setNewsList] = useState([]);
+  
   const[favoritesList, setfavoritesList] = useState(localStorageFavoriteList ? JSON.parse(localStorageFavoriteList): []);
   const[categoriesList, setCategoriesList] = useState([]);
   const[isFavorityModalVisible, setIsFavorityModalVisible] = useState(false); //para abrir a lista de favoritos
   const[currentSelectNew, setCurrentSelectNew] = useState(null);
-  const[search, setSearch] = useState('');
-  const[filter, setFilter] = useState('');
 
-/*
-  const searchAndFilteredResults = newsList.filter((currentNew) =>
-     currentNew.title.toLowerCase().includes(search.toLowerCase()) ||
-     currentNew.category.toLowerCase().includes(search.toLowerCase())
-     ); 
-     busca por nome/ letra/ meio nome
-*/
 
-const searchAndFilteredResults = newsList.filter((currentNew) =>
-  (currentNew.title.toLowerCase().includes(search.toLowerCase()) ||
-  currentNew.category.toLowerCase().includes(search.toLowerCase())) &&
-  (filter === "" ? true : currentNew.category === filter)
-);
 
-  const loadNews = async() =>{
-    try {
-      const response = await api.get('/news');
-  
-      setNewsList(response.data);
-
-    } catch (error) {
-      console.log('erro');
-    }
-  }
 
   const loadCategories = async() =>{
     try {
@@ -61,7 +37,6 @@ const searchAndFilteredResults = newsList.filter((currentNew) =>
 
   useEffect(() => {
 
-    loadNews();
     loadCategories();
 
   },[]); // efeito de montagem
@@ -96,22 +71,24 @@ const searchAndFilteredResults = newsList.filter((currentNew) =>
         <GlobalStyles />
         {/*-- compisição diminui o prop drilling e melhora a performace --*/}
         <Header>
-          <HeaderControls setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} setSearch={setSearch}  />
+          <HeaderControls setIsFavorityModalVisible={setIsFavorityModalVisible} favoritesList={favoritesList} />
         </Header>
       
         <CategoryList 
           mobileList={<MobileCategoryList 
             categoriesList={categoriesList} 
-            setFilter={setFilter}/> }
+          /> }
 
           desktopList={<DesktopCategoryList 
             categoriesList={categoriesList} 
-            setFilter={setFilter} />}
-        />
+          />}
+         />
 
         <StyledContainer>
           
-          <NewFeed newsList={newsList} addNewToFavoriteList={addNewToFavoriteList} setCurrentSelectNew={setCurrentSelectNew} searchAndFilteredResults={searchAndFilteredResults} search={search} setSearch={setSearch} filter={filter} />
+          <NewFeed 
+            addNewToFavoriteList={addNewToFavoriteList} 
+            setCurrentSelectNew={setCurrentSelectNew} />
         </StyledContainer>
 
        

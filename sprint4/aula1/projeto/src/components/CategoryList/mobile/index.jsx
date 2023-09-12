@@ -2,9 +2,12 @@ import { useState } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
 import { StyledMobileCategoryList } from "./style";
 import { StyledContainer } from "../../../styles/grid";
+import { useNewsContext} from "../../providers/NewsContext";
 
-export const MobileCategoryList = ({ categoriesList, setFilter }) => {
+export const MobileCategoryList = ({ categoriesList}) => {
   [isOpen, setIsOpen] = useState(false);
+
+  const {setFilter} = useNewsContext();
 
   return (
     <StyledMobileCategoryList>

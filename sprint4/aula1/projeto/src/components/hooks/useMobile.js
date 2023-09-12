@@ -7,7 +7,7 @@ export const UseMobile =(breakpoint)=>{
     useEffect(()=>{
 
         function handleResize(){
-            console.log(window.innerWidth); // ver o tamanho do menu
+          //  console.log(window.innerWidth); // ver o tamanho do menu
             if(window.innerWidth < breakpoint){
                
                     setIsMobile(true);

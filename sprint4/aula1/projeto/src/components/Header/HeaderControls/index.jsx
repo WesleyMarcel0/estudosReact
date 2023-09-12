@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { StyledHeardControls } from "./style";
 import { MdSearch, MdFavoriteBorder } from "react-icons/md";
+import { useNewsContext} from "../../providers/NewsContext";
 
 
-export const HeaderControls = ({favoritesList,setIsFavorityModalVisible,setSearch}) =>{
-
+export const HeaderControls = ({favoritesList,setIsFavorityModalVisible}) =>{
 
     const[searchInput, setSearchInput] = useState('');
+
+    const {setSearch} = useNewsContext();
 
     const submit = (event) =>{
         event.preventDefault(); // pra previnir aquele problema no html
