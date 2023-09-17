@@ -2,12 +2,15 @@ import { useForm } from "react-hook-form"
 import {InputRef} from "../../components/input"
 import { zodResolver } from '@hookform/resolvers/zod';
 import { schema } from "./valideitor";
+import { useContext } from "react";
+import { AuthContext } from "../../provaiders/AutoProvider";
 
 
 
 
 export const Login = ( )=>{
-                                // esse formState é um objeto que pode alertar o estado do formulario
+    const { signIn } = useContext(AuthContext);
+    // esse formState é um objeto que pode alertar o estado do formulario
     const {
         register,
         handleSubmit, 
@@ -25,7 +28,7 @@ export const Login = ( )=>{
         <section>
             <h1>Login</h1>
 
-            <form onSubmit={handleSubmit(handleRegister)} >
+            <form onSubmit={handleSubmit(signIn)} >
 
                 <InputRef 
                     type='email'

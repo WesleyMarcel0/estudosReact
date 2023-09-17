@@ -1,14 +1,16 @@
-import { useEffect } from "react"
+import { useContext, useEffect } from "react"
 import { api } from "../../services";
 import { useState } from "react";
 import { Card } from "../../components/Card";
-import { Outlet, useSearchParams } from "react-router-dom";
+import { Navigate, Outlet, useSearchParams } from "react-router-dom";
 import { Header } from "../../components/Header";
+import { AuthContext } from "../../provaiders/AutoProvider";
 
 
 export const Home = () =>{
 
     const[books, setBooks] = useState([]);
+    const { user } = useContext(AuthContext);
     const [searchParams] = useSearchParams();
 
     console.log(searchParams.get('search'));
@@ -32,6 +34,10 @@ export const Home = () =>{
 
         getBooks();
     },[searchParams.get('search')]);
+
+    if(!user){
+        return <Navigate to='/' />
+    }
 
     return(
         <main>
