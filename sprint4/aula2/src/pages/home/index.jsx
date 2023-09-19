@@ -10,7 +10,7 @@ import { AuthContext } from "../../provaiders/AutoProvider";
 export const Home = () =>{
 
     const[books, setBooks] = useState([]);
-    const { user } = useContext(AuthContext);
+    const { user,loading } = useContext(AuthContext);
     const [searchParams] = useSearchParams();
 
     console.log(searchParams.get('search'));
@@ -34,6 +34,10 @@ export const Home = () =>{
 
         getBooks();
     },[searchParams.get('search')]);
+
+    if(loading){
+        return <div>Carregando</div>
+    }
 
     if(!user){
         return <Navigate to='/' />
