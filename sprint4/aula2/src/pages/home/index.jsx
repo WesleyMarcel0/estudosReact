@@ -1,24 +1,14 @@
-import { useContext, useEffect } from "react"
-import { api } from "../../services";
-import { useState } from "react";
+import { useContext } from "react"
 import { Card } from "../../components/Card";
-import { Navigate, Outlet, useSearchParams } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Header } from "../../components/Header";
-import { AuthContext } from "../../provaiders/AutoProvider";
+import { BookContext } from "../../provaiders/BookProvider";
 
 
 export const Home = () =>{
 
-    const { user,loading } = useContext(AuthContext);
+    const { books } = useContext(BookContext);
 
-
-    if(loading){
-        return <div>Carregando</div>
-    }
-
-    if(!user){
-        return <Navigate to='/' />
-    }
 
     return(
         <main>

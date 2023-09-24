@@ -2,40 +2,23 @@ import { useForm } from "react-hook-form"
 import {InputRef} from "../../components/input"
 import { Input2 } from "../../components/input/index3Forma";
 import { useContext, useState } from "react";
-import { api } from "../../services";
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate } from "react-router-dom";
 import { schema } from "./valideitor";
-import { AuthContext } from "../../provaiders/AutoProvider";
+import { BookContext } from "../../provaiders/BookProvider";
+
 
 
 
 
 export const Register = ( )=>{
 
-    const { user } = useContext(AuthContext);
+    const { handleRegister } = useContext(BookContext);
                             // esse formState é um objeto que pode alertar o estado do formulario
     const {register,handleSubmit, formState:{ errors }, } = useForm({
         resolver: zodResolver( schema ),
     }); //desistruturar e vinculando o zod ao formulario
 
     const [isTypePassword, setIsTypePassword] = useState(true);
-    const navigate = useNavigate();
-    
-    console.log("Error", errors );
-
-    const handleRegister = async (data) =>{
-
-        try {
-            await api.post('/books', {... data, userId: user.id }) // cada api tem uma regra para adicionar novas informações essa precisa só do id
-            navigate('/home')
-            
-
-        } catch (error) {
-            console.error(error)
-        }
-
-    }
 
     return(
     <main>
